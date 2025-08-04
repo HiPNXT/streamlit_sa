@@ -10,30 +10,48 @@ from pyvi import ViTokenizer, ViPosTagger
 from transformers import AutoModel, AutoTokenizer
 
 ##LOAD EMOJICON
-# file = open('files/emojicon.txt', 'r', encoding="utf8")
-# emoji_lst = file.read().split('\n')
-# emoji_dict = {}
+file = open('files/emojicon.txt', 'r', encoding="utf8")
+emoji_lst = file.read().split('\n')
+emoji_dict = {}
 # for line in emoji_lst:
 #     key, value = line.split('\t')
 #     emoji_dict[key] = str(value)
-# file.close()
+for line in emoji_lst:
+    parts = re.split(r'\s+', line.strip())  # tách bằng 1+ khoảng trắng/tab
+    if len(parts) >= 2:
+        key = parts[0]
+        value = ' '.join(parts[1:])
+        emoji_dict[key] = value
+file.close()
 #################
 #LOAD TEENCODE
 file = open('files/teencode.txt', 'r', encoding="utf8")
 teen_lst = file.read().split('\n')
 teen_dict = {}
+# for line in teen_lst:
+#     key, value = line.split('\t')
+#     teen_dict[key] = str(value)
 for line in teen_lst:
-    key, value = line.split('\t')
-    teen_dict[key] = str(value)
+    parts = re.split(r'\s+', line.strip())  # tách bằng 1+ khoảng trắng/tab
+    if len(parts) >= 2:
+        key = parts[0]
+        value = ' '.join(parts[1:])
+        teen_dict[key] = value
 file.close()
 ###############
 #LOAD TRANSLATE ENGLISH -> VNMESE
 file = open('files/english-vnmese.txt', 'r', encoding="utf8")
 english_lst = file.read().split('\n')
 english_dict = {}
+# for line in english_lst:
+#     key, value = line.split('\t')
+#     english_dict[key] = str(value)
 for line in english_lst:
-    key, value = line.split('\t')
-    english_dict[key] = str(value)
+    parts = re.split(r'\s+', line.strip())  # tách bằng 1+ khoảng trắng/tab
+    if len(parts) >= 2:
+        key = parts[0]
+        value = ' '.join(parts[1:])
+        english_dict[key] = value
 file.close()
 ################
 #LOAD wrong words
@@ -204,4 +222,5 @@ if content != '':
     else:
 
         st.write("Mô hình dự đoán bình luận này là: <TIÊU CỰC>")
+
 
