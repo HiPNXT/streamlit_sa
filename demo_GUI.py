@@ -10,7 +10,7 @@ from pyvi import ViTokenizer, ViPosTagger
 from transformers import AutoModel, AutoTokenizer
 
 ##LOAD EMOJICON
-file = open('D:/Bài báo khoa học/Sentiment-Analysis/files/emojicon.txt', 'r', encoding="utf8")
+file = open('files/emojicon.txt', 'r', encoding="utf8")
 emoji_lst = file.read().split('\n')
 emoji_dict = {}
 for line in emoji_lst:
@@ -19,7 +19,7 @@ for line in emoji_lst:
 file.close()
 #################
 #LOAD TEENCODE
-file = open('D:/Bài báo khoa học/Sentiment-Analysis/files/teencode.txt', 'r', encoding="utf8")
+file = open('files/teencode.txt', 'r', encoding="utf8")
 teen_lst = file.read().split('\n')
 teen_dict = {}
 for line in teen_lst:
@@ -28,7 +28,7 @@ for line in teen_lst:
 file.close()
 ###############
 #LOAD TRANSLATE ENGLISH -> VNMESE
-file = open('D:/Bài báo khoa học/Sentiment-Analysis/files/english-vnmese.txt', 'r', encoding="utf8")
+file = open('files/english-vnmese.txt', 'r', encoding="utf8")
 english_lst = file.read().split('\n')
 english_dict = {}
 for line in english_lst:
@@ -37,12 +37,12 @@ for line in english_lst:
 file.close()
 ################
 #LOAD wrong words
-file = open('D:/Bài báo khoa học/Sentiment-Analysis/files/wrong-word.txt', 'r', encoding="utf8")
+file = open('files/wrong-word.txt', 'r', encoding="utf8")
 wrong_lst = file.read().split('\n')
 file.close()
 #################
 #LOAD STOPWORDS
-file = open('D:/Bài báo khoa học/Sentiment-Analysis/files/vietnamese-stopwords.txt', 'r', encoding="utf8")
+file = open('files/vietnamese-stopwords.txt', 'r', encoding="utf8")
 stopwords_lst = file.read().split('\n')
 file.close()
 
@@ -167,14 +167,14 @@ def extract_features(text):
 
 @st.cache_data
 def load_scale():
-    with open('D:/Bài báo khoa học/GUI/Model/scaler_phobert.pkl', 'rb') as f:
+    with open('model/scaler_phobert.pkl', 'rb') as f:
         scaler = pickle.load(f)
     return scaler
 
 @st.cache_data
 def load_model():
     # Đọc lại mô hình
-    with open('D:/Bài báo khoa học/GUI/Model/svm_model.pkl', 'rb') as f:
+    with open('model/svm_model.pkl', 'rb') as f:
         svm_model = pickle.load(f)
     return svm_model
 
@@ -202,4 +202,5 @@ if content != '':
     elif(y_pred == 1):
         st.write("Mô hình dự đoán bình luận này là: <TRUNG TÍNH>")
     else:
+
         st.write("Mô hình dự đoán bình luận này là: <TIÊU CỰC>")
