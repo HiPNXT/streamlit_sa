@@ -10,13 +10,13 @@ from pyvi import ViTokenizer, ViPosTagger
 from transformers import AutoModel, AutoTokenizer
 
 ##LOAD EMOJICON
-file = open('files/emojicon.txt', 'r', encoding="utf8")
-emoji_lst = file.read().split('\n')
-emoji_dict = {}
-for line in emoji_lst:
-    key, value = line.split('\t')
-    emoji_dict[key] = str(value)
-file.close()
+# file = open('files/emojicon.txt', 'r', encoding="utf8")
+# emoji_lst = file.read().split('\n')
+# emoji_dict = {}
+# for line in emoji_lst:
+#     key, value = line.split('\t')
+#     emoji_dict[key] = str(value)
+# file.close()
 #################
 #LOAD TEENCODE
 file = open('files/teencode.txt', 'r', encoding="utf8")
@@ -204,3 +204,4 @@ if content != '':
     else:
 
         st.write("Mô hình dự đoán bình luận này là: <TIÊU CỰC>")
+
